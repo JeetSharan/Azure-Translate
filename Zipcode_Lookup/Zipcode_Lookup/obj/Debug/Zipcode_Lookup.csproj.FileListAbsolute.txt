@@ -1,0 +1,5 @@
+C:\Users\skaur166\source\repos\Zipcode_Lookup\Zipcode_Lookup\obj\Debug\Zipcode_Lookup.csproj.CoreCompileInputs.cache
+C:\Users\skaur166\source\repos\Zipcode_Lookup\Zipcode_Lookup\bin\Debug\Zipcode_Lookup.dll
+C:\Users\skaur166\source\repos\Zipcode_Lookup\Zipcode_Lookup\bin\Debug\Zipcode_Lookup.pdb
+C:\Users\skaur166\source\repos\Zipcode_Lookup\Zipcode_Lookup\obj\Debug\Zipcode_Lookup.dll
+C:\Users\skaur166\source\repos\Zipcode_Lookup\Zipcode_Lookup\obj\Debug\Zipcode_Lookup.pdb

@@ -1,0 +1,63 @@
+﻿// Created by Microsoft (R) C/C++ Compiler Version 14.16.27030.1 (b3960335).
+//
+// c:\users\skaur166\source\repos\cppclient\cppclient\debug\zipcode_lookup.tlh
+//
+// C++ source equivalent of Win32 type library ..\..\Zipcode_Lookup\Zipcode_Lookup\bin\Debug\Zipcode_Lookup.tlb
+// compiler-generated file created 05/04/19 at 19:39:39 - DO NOT EDIT!
+
+#pragma once
+#pragma pack(push, 8)
+
+#include <comdef.h>
+
+namespace Zipcode_Lookup {
+
+//
+// Forward references and typedefs
+//
+
+struct __declspec(uuid("03e96c20-a852-4679-adef-0756ebeb0831"))
+/* LIBID */ __Zipcode_Lookup;
+struct __declspec(uuid("fb283a8a-c15c-3170-9b28-15a952010db6"))
+/* dual interface */ ICalculator;
+struct /* coclass */ ManagedClass;
+struct __declspec(uuid("5e8176de-b5ae-399c-81c0-28e8139d71f7"))
+/* dual interface */ _ManagedClass;
+
+//
+// Smart pointer typedef declarations
+//
+
+_COM_SMARTPTR_TYPEDEF(ICalculator, __uuidof(ICalculator));
+_COM_SMARTPTR_TYPEDEF(_ManagedClass, __uuidof(_ManagedClass));
+
+//
+// Type library items
+//
+
+struct __declspec(uuid("fb283a8a-c15c-3170-9b28-15a952010db6"))
+ICalculator : IDispatch
+{
+    //
+    // Raw methods provided by interface
+    //
+
+      virtual HRESULT __stdcall Add (
+        /*[in]*/ long Number1,
+        /*[in]*/ long Number2,
+        /*[out,retval]*/ long * pRetVal ) = 0;
+};
+
+struct __declspec(uuid("abdf4c89-8c18-3cac-95c8-33b2657d2fa1"))
+ManagedClass;
+    // [ default ] interface _ManagedClass
+    // interface _Object
+    // interface ICalculator
+
+struct __declspec(uuid("5e8176de-b5ae-399c-81c0-28e8139d71f7"))
+_ManagedClass : IDispatch
+{};
+
+} // namespace Zipcode_Lookup
+
+#pragma pack(pop)
