@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Employee Portal</title>
+        <script>
+            var data;
+            var presentEmpID="";
+
+            //set default date wrt selected company
+            function setDefDate()
+            {
+                var selComp = document.getElementById("EmployerSelect").value;
+                var defDate = 0;
+
+                data.forEach(emp => {
+                            if(emp.employerName == selComp)
+                            {
+                                defDate=emp.date;
+                            }
+                        });
+                        var select = document.getElementById("PayDay");
+                        select.value=defDate;
+            }
+
+            //load dates in drop down during load
+            function loadDates() {
+                
+                
+                    var date = new Date();
+                    var startDate = date.getDate();
+                    
+                        var select = document.getElementById("PayDay");
+                        var maxDays = new Date(date.getFullYear(),date.getMonth()-1,0)
+                
+                        for(day = startDate+1;day<=maxDays.getDate();day=day+1) {
+                            select.options[select.options.length] = new Option(day,day, false, false);
+                        }
+                    
+                
+            }
+
+            //load employer list for entered empID
+            function loadEmployerList() {
+                var empID = document.getElementById("emp_id").value;
+                var select = document.getElementById("EmployerSelect");
+                if(empID!=presentEmpID)
+                {
+                    presentEmpID=empID;
+                    var length = select.options.length;
+                    for (i = 0; i < length; i++) {
+                        select.options[0] = null;
+                    }
+                    if (empID.length!=0)
+                    {  
+                        var request = new XMLHttpRequest();
+                        request.open('GET', 'http://localhost:3000/api/employeeData?empID='+empID, true);  
+                        request.onload = function () {
+                            // Begin accessing JSON data here
+                            data = JSON.parse(this.response);
+                    
+                            select.options[select.options.length] = new Option("","def");
+                            data.forEach(emp => {
+                                select.options[select.options.length] = new Option(emp.employerName, emp.employerName);
+                            });
+                        }
+                        request.send();
+                    }
+                }
+            }
+
+            //submit date
+            function submitApprovalRequest() {
+                alert('Request for approval submitted successfully!');
+            }
+        </script>
+    </head>
+    <body onload="loadDates()">
+        <h1 align = "center">Employee Pay Schedule Portal</h1>
+        <br><br><br><br><br>
+
+    <p style="padding-left: 200px;"> 
+        <label style="padding-right: 80px;">Email ID:</label>
+        <input type = "text"
+                id = "emp_id"
+                placeholder = "xyz@abc.com"
+                size = "35" 
+                onfocusout ="loadEmployerList()"/>
+    </p>
+    <br>
+    <p style="padding-left: 200px;">
+        <label style="padding-right: 32px;">Employer Name:</label>
+        <select id = "EmployerSelect" name="Employer" onchange ="setDefDate()">
+        </select>
+    </p>
+    <br>
+    <p style="padding-left: 200px;">
+        <label style="padding-right: 83px;">Pay Day:</label>
+        <select id = "PayDay" name="Date">
+        </select>
+    </p>
+    <br>
+    <p style="padding-left: 200px;">
+            <button style="width: 20%; height: 60%; background-color:darkgray; font-size: 16px; 
+            border-radius: 8px; box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19) " type="button" 
+            onclick="submitApprovalRequest()">Send For Approval</button>
+    </p>
+
+    </body>
+</html>
